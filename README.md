@@ -1,1 +1,1 @@
-# rock-paper-sissor
+This is a rock paper scissor project for the Odin Project.
