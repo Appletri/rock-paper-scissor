@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <script type="text/javascript" src="script.js">
-       
-    </script>   
+    <head>
+        <script type="text/javascript" src="script.js" defer></script> 
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet"> 
+    </head>
+      
     
-    <body>
-
+    <body id="body">
+        <h1 id="main-header">Rock Paper Scissors</h1>
+        <div id="goku">
+            <img src="RPS assets/goku-kamehameha-png-818463.png">
+            <div id="kamehameha"></div>
+        </div>
+        <div id="container">
+            <div id="players-block">
+                <div class="box">
+                    <img class="scissors" src="RPS assets/vippng.com-water-drop-transparent-png-796560.png" width= "150px" >
+                </div>
+                <div class="box">
+                    <img class="rock" src="RPS assets/vippng.com-water-drop-transparent-png-796560.png" width= "150px" >
+                </div>
+                <div class="box">
+                    <img class="paper" src="RPS assets/vippng.com-water-drop-transparent-png-796560.png" width= "150px" >
+                </div>
+            </div>
+            <div id="ai-block">
+                <div id="ai-select" class="ai-box">
+                    <img class="ai-input" src="RPS assets/vippng.com-water-drop-transparent-png-796560.png" width= "150px" >
+                </div>
+            </div>
+            <div id="results"></div>
+            <div id="ai-bar"></div> 
+            <div id="player-bar">
+                <div id="clash-beam"></div>
+                <div id="clash">
+                <div id="p-beam">
+                    <img id="p-beam-1" src="RPS assets/beam_part_1.png" >
+                    <img id="p-beam-2" src="RPS assets/beam_part_2.png" >
+                </div>
+                
+                <div id="ai-beam">
+                    <img id="ai-beam-1" src="RPS assets/beam_part_1.png" >
+                    <img id="ai-beam-2" src="RPS assets/beam_part_2.png" >
+                </div>
+            </div>
+            </div>
+            
+                
+        </div>
+        <div id="defeated"><img src="RPS assets/gki.png" width="100%" background-repeat="no-repeat" alt="goku is defeated"> </div>
+        <div id="winner"><img src="RPS assets/CellsDeadGohan.png" width="100%" background-repeat="no-repeat" alt="cell is defeated"> </div>   
+             
     </body>
 
 

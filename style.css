@@ -1,0 +1,268 @@
+html {
+    font-size: 30px;
+    background-color:darkgray;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+h1{
+    text-align:center;
+    z-index:-1;
+    animation: slideIn 2s ease-out 1;   
+}
+
+@keyframes slideIn {
+    0% {
+        transform:translateX(-1000px)
+    }
+    40% {
+        transform:translateX(-100px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideInR {
+    0% {
+        transform:translateX(1000px)
+    }
+    40% {
+        transform:translateX(100px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+#goku{
+    display:block;
+    animation: slideInR 2s ease-out 1;
+}
+
+#container{
+    display:none;
+    height:20rem;
+    width:100%;
+    
+}
+
+.box {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid goldenrod;
+    border-radius: 50%;
+    background-image: linear-gradient(45deg,rgba(255, 153, 0, 0.699),yellow);
+    margin: 1rem;
+    z-index:1;
+    overflow:hidden;
+}
+.ai-box {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid purple;
+    border-radius: 50%;
+    background-image: linear-gradient(45deg,rgba(85, 18, 99, 0.699),rgb(192, 24, 170));
+    margin: 1rem;
+    z-index:1;
+    overflow:hidden;
+}
+
+#players-block{
+    display:flex;
+    
+    width:15rem;
+    
+}
+   
+#ai-block{
+    display:block;
+    position:absolute;
+    top:5rem;
+    right:0px;
+    width:6rem;
+    
+    
+}    
+
+.rock{
+    position:relative;
+    right:80px;
+    top:8px;
+    
+}
+
+.paper{
+    position:relative;
+    bottom:47px;
+    right:10px;
+    
+}
+
+.scissors{
+    position:relative;
+    margin-top:22px;
+    margin-left:10px;
+    
+}
+
+.box:hover {
+    box-shadow: 0 0 25px rgb(255, 251, 0);
+    transform: scale(1.1);
+}
+
+.ai-input{
+    position:relative;
+    bottom:50px;
+    right:500px;
+}
+
+#ai-bar{
+    position:absolute;
+    width:80%;
+    top:15.2rem;
+    margin-left:10%;
+    height:3rem;
+    background-image: linear-gradient(rgb(219, 52, 219),rgb(255, 95, 188) ,white,rgb(255, 95, 188),rgb(219, 52, 219));
+    box-shadow: 0 0 20px rgb(225, 156, 247);
+}
+
+#player-bar{
+    position:relative;
+    width:40%;
+    margin-top:5.4rem;
+    margin-left:10%;
+    height:3rem;
+    background-image: linear-gradient(rgb(9, 130, 167) , rgb(126, 229, 255),white,rgb(126, 229, 255), rgb(9, 130, 167) );
+    
+    
+    box-shadow: 0 0 20px rgb(118, 246, 255);
+}
+
+
+
+
+#results{
+    position:absolute;
+    width:98.8%;
+    text-align:center;
+    top:11rem;
+
+    
+}
+#clash{
+    position: absolute;
+    right:3.2rem;
+    top:-2rem;
+    z-index:-1;
+}
+
+#p-beam-1 {
+    position: absolute;
+    top:5px;
+    transform: scale(1.6);  
+    animation: pulsePlayer 1s infinite ease-in-out;
+}
+#p-beam-2 {
+    position: absolute;
+    top:5px;
+    transform: scale(1.6);
+    animation: pulsePlayer 1s infinite .5s ease-in-out;  
+}
+#ai-beam-1 {
+    position: absolute;
+    top:2px;
+    margin-left:3.5rem;
+    transform: scale(-1.6); 
+    animation: pulseAi 1s infinite .5s ease-in-out;  
+}
+#ai-beam-2 {
+    position: absolute;
+    top:2px;
+    margin-left:3.5rem;
+    transform: scale(-1.6);
+    animation: pulseAi 1s infinite 1s ease-in-out;  
+}
+#clash-beam {
+    position: absolute;
+    left:99%;
+    top:-2.5rem;
+    width:.5rem;
+    height: 8rem;
+    border-radius:50%;
+    box-shadow:0 0 20px white, 0 0 10px white, 0 0 5px white;
+    background-color: white;
+    animation: pulse 0.5s infinite; 
+}
+
+@keyframes pulsePlayer {
+    0%{
+        opacity:1;
+        transform:scale(1.6);
+    }
+    50%{
+        opacity:.5;
+        transform:scale(1.4);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1.6);
+    }
+}
+
+@keyframes pulseAi {
+    0%{
+        opacity:1;
+        transform:scale(-1.6);
+    }
+    50%{
+        opacity:.5;
+        transform:scale(-1.4);
+    }
+    100%{
+        opacity:1;
+        transform:scale(-1.6);
+    }
+}
+
+@keyframes pulse {
+    0%{
+        box-shadow:0 0 20px white, 0 0 10px white, 0 0 5px white;
+        transform:scale(1);
+    }
+    50%{
+        box-shadow:0 0 40px white, 0 0 20px white, 0 0 1px white;
+        transform:scale(1.1);
+    }
+    100%{
+        box-shadow:0 0 20px white, 0 0 10px white, 0 0 5px white;
+        transform:scale(1);
+    }
+}
+
+
+#flash {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    animation: fadeOut 2s 1 ease-out;
+}
+@keyframes fadeOut{
+    0%{
+        opacity:1;
+        background-color: white;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+#defeated {
+    display:none;
+
+}
+#winner {
+    display:none;
+
+}

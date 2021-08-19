@@ -1,45 +1,21 @@
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let matches = 1;
-    let gameStatus = "string";
-    
 
-    for (matches;matches<Infinity;matches++) {
-        
-
-        
-        gameStatus = playerSelection();
-            
-            if (gameStatus == "win") {
-                playerScore = playerScore + 1;
-            }
-            else if (gameStatus == "tied") {
-                
-            }
-            else {
-                computerScore = computerScore + 1;
-            }
-
-            if (playerScore == 3) {
-                alert ("YOU WIN");
-                return;
-            }
-            else if (computerScore == 3) {
-                alert ("YOU LOSE");
-                return;
-            }
-
-            console.log ("player" + playerScore);
-            console.log ("computer" + computerScore);
-            console.log ("matches" + matches);
-            console.log (gameStatus);
-            
-            
+let playerScore = 0;
+let gameStatus = "string";
+const boxes = Array.from(document.querySelectorAll('.box'));
+const aiInput = document.querySelector('.ai-input');
+const playerBar = document.querySelector("#player-bar");
+const results = document.querySelector("#results");
+const clash = document.querySelector("#clash");
+const clashBeam = document.querySelector("#clash-beam");
+const container = document.querySelector("#container");
+const body = document.querySelector("#body");
+const defeated = document.querySelector("#defeated");
+const winner = document.querySelector("#winner");
+const mainHeader=document.querySelector("#main-header");
+let currentWidth = 40;
 
 
-    }
-}
+boxes.forEach(box => box.addEventListener('click',playerSelection));
 
 function computerPlay() {
     const rps = ["rock","paper","scissors"];
@@ -47,63 +23,121 @@ function computerPlay() {
 }
 
 
-function playerSelection () {
-    let playerChoice = prompt("Rock Paper or Scissors?").toLowerCase();
+
+
+function playerSelection (e) {
+    
+    
+    let playerChoice = e.target.className;
+    // console.log (playerChoice);
+
+    
     let computerSelection = computerPlay();
-    console.log (computerSelection);
+    aiInput.setAttribute('class',computerSelection);
+    
+    // console.log (computerSelection);
 
     if (playerChoice == "rock") {
         if (computerSelection == "rock"){
-            alert ("Try Again");
-            return "tied";        
+            results.textContent = "Try Again";
+            gameStatus = "tied";        
         } 
         else if (computerSelection == "paper"){
-            alert ("You Lose! Paper beats Rock");
-            return "lose";
+            results.textContent = "You Lose! Paper beats Rock";
+            gameStatus = "lose";
         }
         else {
-            alert ("You Win! Rock beats Scissors");
-            return "win";
+            results.textContent = "You Win! Rock beats Scissors";
+            gameStatus = "win";
         } 
     }
     else if (playerChoice == "paper") {
         if (computerSelection == "rock"){
-            alert ("You Win! Paper beats Rock");
-            return "win";      
+            results.textContent = "You Win! Paper beats Rock";
+            gameStatus = "win";      
         } 
         else if (computerSelection == "paper"){
-            alert ("Try Again");
-            return "tied";
+            results.textContent = "Try Again";
+            gameStatus = "tied";
         }
         else {
-            alert ("You Lose! Scissors beats Paper");
-            return "lose";
+            results.textContent ="You Lose! Scissors beats Paper";
+            gameStatus = "lose";
         } 
     }
     else if (playerChoice == "scissors") {
         if (computerSelection == "rock"){
-            alert ("You Lose! Rock beats Scissors");
-            return "lose";        
+            results.textContent ="You Lose! Rock beats Scissors";
+            gameStatus = "lose";        
         } 
         else if (computerSelection == "paper"){
-            alert ("You Win! Scissors beats Paper");
-            return "win";
+            results.textContent = "You Win! Scissors beats Paper";
+            gameStatus = "win";
         }
         else {
-            alert ("Try Again");
-            return "tied";
+            results.textContent = "Try Again";
+            gameStatus = "tied";
         } 
+
     }
-    else if (playerChoice == null || playerChoice == "") {
-        alert("Canceled");
+
+            
+    if (gameStatus == "win") {
+        playerScore = playerScore + 1;
+        currentWidth += 13;
+        playerBar.style.width = `${currentWidth}%`;
+        
+    }
+    else if (gameStatus == "tied") {
+        
     }
     else {
-        playerSelection();
+        playerScore = playerScore - 1;
+        currentWidth -= 13;
+        playerBar.style.width = `${currentWidth}%`;
+        
     }
+
+    if (playerScore == 3) {
+        boxes.forEach(box => box.removeEventListener('click',playerSelection));
+        playerBar.style.width = `81.2%`;
+        win();
+        mainHeader.textContent = "YOU WIN!";
+        return;
+    }
+    else if (playerScore == -3) {
+        playerBar.style.width = `0%`;
+        boxes.forEach(box => box.removeEventListener('click',playerSelection));
+        lose();
+        mainHeader.textContent = "YOU LOSE!";
+        return;
+    }
+
+    console.log (gameStatus);
 }
 
 
-game();
+function lose() {
+    container.style.display = "none";
+    let flash = document.createElement("div");
+    flash.setAttribute('id', 'flash')
+    body.appendChild(flash);
+    setTimeout(removeFlash, 2000);
+    defeated.style.display = "block";
+    
+}
 
+function win() {
+    container.style.display = "none";
+    let flash = document.createElement("div");
+    flash.setAttribute('id', 'flash')
+    body.appendChild(flash);
+    setTimeout(removeFlash, 2000);
+    winner.style.display = "block";
+    
+}
+    
 
-
+function removeFlash() {
+    body.removeChild(flash);
+}
