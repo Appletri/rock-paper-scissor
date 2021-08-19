@@ -11,8 +11,27 @@ const container = document.querySelector("#container");
 const body = document.querySelector("#body");
 const defeated = document.querySelector("#defeated");
 const winner = document.querySelector("#winner");
-const mainHeader=document.querySelector("#main-header");
+const mainHeader = document.querySelector("#main-header");
+const goku = document.querySelector("#goku");
+const kamehameha = document.querySelector("#kamehameha");
+const start = document.querySelector('#start');
+const goku2 = document.querySelector("#goku-p2");
 let currentWidth = 40;
+
+
+
+start.addEventListener('click',() => {
+    start.style.display = "none";
+    goku.style.display = "none";
+    flash();
+    goku2.style.display = "block";
+    goku2.style.animation = "slideIn 2s ease-out 1";
+});
+goku2.addEventListener('animationend',() => {
+    goku2.style.display = "none";
+    flash();
+    container.style.display = "block";
+});
 
 
 boxes.forEach(box => box.addEventListener('click',playerSelection));
@@ -119,20 +138,14 @@ function playerSelection (e) {
 
 function lose() {
     container.style.display = "none";
-    let flash = document.createElement("div");
-    flash.setAttribute('id', 'flash')
-    body.appendChild(flash);
-    setTimeout(removeFlash, 2000);
+    flash();
     defeated.style.display = "block";
     
 }
 
 function win() {
     container.style.display = "none";
-    let flash = document.createElement("div");
-    flash.setAttribute('id', 'flash')
-    body.appendChild(flash);
-    setTimeout(removeFlash, 2000);
+    flash();
     winner.style.display = "block";
     
 }
@@ -140,4 +153,11 @@ function win() {
 
 function removeFlash() {
     body.removeChild(flash);
+}
+
+function flash() {
+    let flash = document.createElement("div");
+    flash.setAttribute('id', 'flash')
+    body.appendChild(flash);
+    setTimeout(removeFlash, 2000); 
 }
