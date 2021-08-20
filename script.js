@@ -16,7 +16,10 @@ const goku = document.querySelector("#goku");
 const kamehameha = document.querySelector("#kamehameha");
 const start = document.querySelector('#start');
 const goku2 = document.querySelector("#goku-p2");
+const krillinBelieve = document.querySelector("#krillin-believe");
+const op = document.querySelector("#op");
 let currentWidth = 40;
+let godMode = false;
 
 
 
@@ -26,6 +29,7 @@ start.addEventListener('click',() => {
     flash();
     goku2.style.display = "block";
     goku2.style.animation = "slideIn 2s ease-out 1";
+    
 });
 goku2.addEventListener('animationend',() => {
     goku2.style.display = "none";
@@ -55,51 +59,73 @@ function playerSelection (e) {
     aiInput.setAttribute('class',computerSelection);
     
     // console.log (computerSelection);
-
-    if (playerChoice == "rock") {
-        if (computerSelection == "rock"){
-            results.textContent = "Try Again";
-            gameStatus = "tied";        
-        } 
-        else if (computerSelection == "paper"){
-            results.textContent = "You Lose! Paper beats Rock";
-            gameStatus = "lose";
+    if (godMode == false){
+        if (playerChoice == "rock") {
+            if (computerSelection == "rock"){
+                results.textContent = "Try Again";
+                gameStatus = "tied";        
+            } 
+            else if (computerSelection == "paper"){
+                results.textContent = "You Lose! Paper beats Rock";
+                gameStatus = "lose";
+            }
+            else {
+                results.textContent = "You Win! Rock beats Scissors";
+                gameStatus = "win";
+            } 
         }
-        else {
-            results.textContent = "You Win! Rock beats Scissors";
+        else if (playerChoice == "paper") {
+            if (computerSelection == "rock"){
+                results.textContent = "You Win! Paper beats Rock";
+                gameStatus = "win";      
+            } 
+            else if (computerSelection == "paper"){
+                results.textContent = "Try Again";
+                gameStatus = "tied";
+            }
+            else {
+                results.textContent ="You Lose! Scissors beats Paper";
+                gameStatus = "lose";
+            } 
+        }
+        else if (playerChoice == "scissors") {
+            if (computerSelection == "rock"){
+                results.textContent ="You Lose! Rock beats Scissors";
+                gameStatus = "lose";        
+            } 
+            else if (computerSelection == "paper"){
+                results.textContent = "You Win! Scissors beats Paper";
+                gameStatus = "win";
+            }
+            else {
+                results.textContent = "Try Again";
+                gameStatus = "tied";
+            } 
+
+        }
+    }
+    else {
+        if (playerChoice == "rock") {
+            computerSelection = "scissors";
+            aiInput.setAttribute('class',computerSelection);
+            results.textContent = "Don't Give Up!";
             gameStatus = "win";
-        } 
-    }
-    else if (playerChoice == "paper") {
-        if (computerSelection == "rock"){
-            results.textContent = "You Win! Paper beats Rock";
-            gameStatus = "win";      
-        } 
-        else if (computerSelection == "paper"){
-            results.textContent = "Try Again";
-            gameStatus = "tied";
         }
-        else {
-            results.textContent ="You Lose! Scissors beats Paper";
-            gameStatus = "lose";
-        } 
-    }
-    else if (playerChoice == "scissors") {
-        if (computerSelection == "rock"){
-            results.textContent ="You Lose! Rock beats Scissors";
-            gameStatus = "lose";        
-        } 
-        else if (computerSelection == "paper"){
-            results.textContent = "You Win! Scissors beats Paper";
+        else if (playerChoice == "paper") {
+            computerSelection = "rock";
+            aiInput.setAttribute('class',computerSelection);
+            results.textContent = "You can do it!";
             gameStatus = "win";
         }
-        else {
-            results.textContent = "Try Again";
-            gameStatus = "tied";
-        } 
-
+        else if (playerChoice == "scissors") {
+            computerSelection = "paper";
+            aiInput.setAttribute('class',computerSelection);
+            results.textContent = "We believe in You!";
+            gameStatus = "win";
+        }
     }
-
+    
+    
             
     if (gameStatus == "win") {
         playerScore = playerScore + 1;
@@ -117,22 +143,27 @@ function playerSelection (e) {
         
     }
 
-    if (playerScore == 3) {
+    if (playerScore == 4) {
         boxes.forEach(box => box.removeEventListener('click',playerSelection));
-        playerBar.style.width = `81.2%`;
+        playerBar.style.width = `100%`;
         win();
         mainHeader.textContent = "YOU WIN!";
         return;
     }
     else if (playerScore == -3) {
-        playerBar.style.width = `0%`;
-        boxes.forEach(box => box.removeEventListener('click',playerSelection));
-        lose();
-        mainHeader.textContent = "YOU LOSE!";
-        return;
+        flash();
+        krillin();
+        godMode=true;
     }
+    // else if (playerScore == -4) {
+    //     playerBar.style.width = `0%`;
+    //     boxes.forEach(box => box.removeEventListener('click',playerSelection));
+    //     lose();
+    //     mainHeader.textContent = "YOU LOSE!";
+    //     return;
+    // }
 
-    console.log (gameStatus);
+    console.log (playerScore);
 }
 
 
@@ -160,4 +191,25 @@ function flash() {
     flash.setAttribute('id', 'flash')
     body.appendChild(flash);
     setTimeout(removeFlash, 2000); 
+}
+
+function krillin() {
+    let krillin = document.createElement("div");
+    krillin.setAttribute('id', 'krillin');
+    let krillinFace = document.createElement("img");
+    krillinFace.src = "RPS assets/krillin.png";
+    krillinFace.setAttribute('id', 'krillin-face');
+    krillin.appendChild(krillinFace);
+    body.appendChild(krillin);
+    krillin.addEventListener('animationend',() => {
+        body.removeChild(krillin);
+    });
+    krillinBelieve.play();
+    setTimeout(song,1500);
+
+    
+}
+
+function song() {
+    op.play();
 }
