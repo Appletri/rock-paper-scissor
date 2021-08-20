@@ -18,6 +18,7 @@ const start = document.querySelector('#start');
 const goku2 = document.querySelector("#goku-p2");
 const krillinBelieve = document.querySelector("#krillin-believe");
 const op = document.querySelector("#op");
+let biggerText = 1;
 let currentWidth = 40;
 let godMode = false;
 
@@ -105,21 +106,28 @@ function playerSelection (e) {
         }
     }
     else {
+
         if (playerChoice == "rock") {
             computerSelection = "scissors";
             aiInput.setAttribute('class',computerSelection);
-            results.textContent = "Don't Give Up!";
+            biggerText = biggerText + .25 ;
+            results.style.fontSize = `${biggerText}rem`;
+            results.textContent = `Don't Give Up!`;
             gameStatus = "win";
         }
         else if (playerChoice == "paper") {
             computerSelection = "rock";
             aiInput.setAttribute('class',computerSelection);
+            biggerText = biggerText + .25;
+            results.style.fontSize = `${biggerText}rem`;
             results.textContent = "You can do it!";
             gameStatus = "win";
         }
         else if (playerChoice == "scissors") {
             computerSelection = "paper";
             aiInput.setAttribute('class',computerSelection);
+            biggerText = biggerText + .25;
+            results.style.fontSize = `${biggerText}rem`;
             results.textContent = "We believe in You!";
             gameStatus = "win";
         }
@@ -129,7 +137,7 @@ function playerSelection (e) {
             
     if (gameStatus == "win") {
         playerScore = playerScore + 1;
-        currentWidth += 13;
+        currentWidth += 15;
         playerBar.style.width = `${currentWidth}%`;
         
     }
