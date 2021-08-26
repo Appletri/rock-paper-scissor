@@ -196,6 +196,7 @@ h1{
     height:3rem;
     background-image: linear-gradient(rgb(219, 52, 219),rgb(255, 95, 188) ,white,rgb(255, 95, 188),rgb(219, 52, 219));
     box-shadow: 0 0 20px rgb(225, 156, 247);
+    overflow: hidden;
 }
 
 #player-bar{
