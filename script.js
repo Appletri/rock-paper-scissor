@@ -18,6 +18,7 @@ const start = document.querySelector('#start');
 const goku2 = document.querySelector("#goku-p2");
 const krillinBelieve = document.querySelector("#krillin-believe");
 const op = document.querySelector("#op");
+const html = document.querySelector("html");
 let biggerText = 1;
 let currentWidth = 40;
 let godMode = false;
@@ -186,7 +187,7 @@ function win() {
     container.style.display = "none";
     flash();
     winner.style.display = "block";
-    
+    html.style.background = "white";
 }
     
 

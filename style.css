@@ -1,6 +1,10 @@
 html {
     font-size: 30px;
-    background-color:darkgray;
+    background: url(./RPS\ assets/thumb-1920-677266.png) no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
     font-family: 'Luckiest Guy', cursive;
 }
 
@@ -112,10 +116,7 @@ h1{
     }
 }
 #container{
-    display:none;
-    height:20rem;
-    width:100%;
-    
+    display:none;    
 }
 
 .box {
@@ -200,9 +201,9 @@ h1{
 }
 
 #player-bar{
-    position:relative;
+    position:absolute;
     width:52%;
-    margin-top:5.4rem;
+    top:15.2rem;
     left:-10px;
     height:3rem;
     background-image: linear-gradient(rgb(9, 130, 167) , rgb(126, 229, 255),white,rgb(126, 229, 255), rgb(9, 130, 167) );
@@ -425,5 +426,5 @@ h1{
 }
 #winner {
     display:none;
-
+    
 }
