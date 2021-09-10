@@ -19,6 +19,8 @@ const goku2 = document.querySelector("#goku-p2");
 const krillinBelieve = document.querySelector("#krillin-believe");
 const op = document.querySelector("#op");
 const html = document.querySelector("html");
+const main = document.querySelector("#main");
+
 let biggerText = 1;
 let currentWidth = 40;
 let godMode = false;
@@ -209,9 +211,9 @@ function krillin() {
     krillinFace.src = "RPS assets/krillin.png";
     krillinFace.setAttribute('id', 'krillin-face');
     krillin.appendChild(krillinFace);
-    body.appendChild(krillin);
+    main.appendChild(krillin);
     krillin.addEventListener('animationend',() => {
-        body.removeChild(krillin);
+        main.removeChild(krillin);
     });
     krillinBelieve.play();
     setTimeout(song,1500);
