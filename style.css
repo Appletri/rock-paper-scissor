@@ -1,10 +1,5 @@
 html {
     font-size: 30px;
-    background: url(./RPS\ assets/thumb-1920-677266.png) no-repeat center center fixed;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
-    background-size:cover;
     font-family: 'Luckiest Guy', cursive;
 }
 
@@ -14,9 +9,13 @@ html {
     position:relative;
     max-width:1230px;
     height: 1100px;
-    
+    isolation:isolate;
     overflow: hidden;
-   
+    background: url(./RPS\ assets/thumb-1920-677266.png) no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover; 
 }
 
 h1{
