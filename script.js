@@ -189,11 +189,12 @@ function win() {
     container.style.display = "none";
     flash();
     winner.style.display = "block";
-    html.style.background = "white";
+    main.style.background = "white";
 }
     
 
 function removeFlash() {
+    let flash = document.getElementById("flash");
     body.removeChild(flash);
 }
 
@@ -201,7 +202,7 @@ function flash() {
     let flash = document.createElement("div");
     flash.setAttribute('id', 'flash')
     body.appendChild(flash);
-    setTimeout(removeFlash, 2000); 
+    setTimeout(removeFlash, 1000); 
 }
 
 function krillin() {
