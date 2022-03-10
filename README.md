@@ -1,5 +1,5 @@
 # Rock Paper Scissors
-![](https://github.com/Appletri/Appletri/blob/main/assets/weather-Jarvis.gif)
+![](https://github.com/Appletri/Appletri/blob/main/assets/rock-paper-scissors.gif)
 
 ## Links
 - [Try RPS here!](https://Appletri.github.io/rock-paper-scissor)
